@@ -1,49 +1,56 @@
-//import Header from '../../components/layout/header';
 import useFormInput from '../../utils/form/formInput'
-import React, { useState } from 'react'
+import React from 'react'
 import useFetchData from '../../utils/fetch/useFetchData'
 import { createWeatherApiEndpointUrl } from '../../utils/endpoints'
 import * as constants from '../../utils/const'
-
 
 import './App.css';
 
 
 export default function App() {
-  const city = useFormInput('Tokyo');
+  const city = useFormInput('');
   const { fetch, status, value, error } = useFetchData(false);
 
-
-
-  const fetchClickHandler = function (event) {
-    const cityId = event.target.value;
-    const url = createWeatherApiEndpointUrl(cityId);
+  const fetchClickHandler = function () {
+    const url = createWeatherApiEndpointUrl(city.value);
     fetch(url);
   }
 
   return (
-    <div className="container px-90 mx-auto justify-between items-center">
-      <div class="py-20" style={ { background: "linear-gradient(90deg, #667eea 0%, #764ba2 100%)"} }>
-        <div class="container mx-auto px-6">
-          <h2 class="text-4xl font-bold mb-2 text-white mx-auto">
-            Hareteiru 
-          </h2>
-          <h3 class="text-2xl mb-8 text-gray-200">
-          - Weather APP
-          </h3>
-          {status === constants.IDLE && <div>Start your journey by clicking a button</div>}
-          {status === constants.PENDING && <div>Loading...</div>}
-          {status === constants.SUCCESS && <div>{JSON.stringify(value)}</div>}
-          {status === 'error' && <div>{error}</div>}
+      <div class="card--weather moon-night">
+        <div class="bg--illustration">
+          <div class="moon"></div>
+          <div class="moon2"></div>
+        </div>
+        <div class="weather--indicator moon-indicator flex flex-col items-center">
+            {/* {status === constants.IDLE && <div>Start your journey by clicking a button</div>} */}
+            {status === constants.PENDING && <>
+              <div class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-700 opacity-75 flex flex-col items-center justify-center">
+                <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+                <h2 class="loader-message text-center text-white text-xl font-semibold">Loading...</h2>
+                <p class="loader-message w-1/3 text-center text-white">This may take a few seconds, please don't close this page.</p>
+              </div>
+              </>
+            }
+            {status === constants.SUCCESS && <> 
+              <div class="flex-auto text-6xl font-bold"> 
+                {value.weather[0].description.split(/ /g).map(val => val[0].toUpperCase() + val.slice(1)).join(' ')}
+              </div>
+              <div class="flex-auto text-6xl"> 
+                {value.name + ", " + value.sys.country}
+              </div>
+              <div class="flex-auto text-9xl font-black"> 
+                {Math.floor(value.main.temp)}°
+              </div>
+              </>
+            }
+            {status === 'error' && <div>{error}</div>}
+          </div>
+        <div class="m-8 city flex" label="City">
+          <input {...city} tabIndex="1" onkeydown={e => e.key === 'Enter' && fetchClickHandler} placeholder="Ex: Tokyo, JP" type="text" class="rounded-md mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black" />
+          <button class="bg-yellow-600 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded" onClick={fetchClickHandler}>Search</button>
         </div>
       </div>
-      <div class="flex flex-wrap content-center justify-center">
-        <div label="City" class="flex-grow-1 mt-5">
-        <input {...city} onClick={fetchClickHandler} type="text" class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black" />
-        <button type='button' onClick={fetchClickHandler}>Click for Data</button>
-        </div>
-      </div>
-    </div>
   );
 }
 

@@ -1,3 +1,200 @@
 .App {
   text-align: center;
 }
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700");
+
+:root {
+  --sun-color: #ffe65c;
+  --sun-color-rgba: rgb(255, 230, 92);
+  --card-sunny: #ffa333;
+  --moon-night: #2f3475;
+  --moon: #ffe646;
+  --moon-wave: rgb(79, 85, 148);
+  --snow-day: #1ec9ed;
+  --foreground-mountain: #82dff9;
+  --background-mountain: #00b4d8;
+}
+
+body {
+  background-color: #dbf8ff;
+}
+
+.grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.city {
+  position: absolute;
+  bottom: 0;
+  z-index: 5;
+}
+
+.card--weather {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+.weather--indicator {
+  vertical-align: middle;
+  width: 100%;
+  display: inline-block;
+  height: 50%;
+  position: absolute;
+  top: 0;
+  bottom: 0%;
+  left: 6vw;
+  margin: auto;
+  color: white;
+  z-index: 2;
+  font-family: "Montserrat Alternates", sans-serif;
+}
+
+.moon-indicator {
+  text-shadow: 1px 3px #182067;
+}
+.sun-indicator {
+  text-shadow: 1px 3px #ff9406;
+}
+.sunny-day {
+  background-color: var(--card-sunny);
+  box-shadow: 0 5px 10px var(--card-sunny);
+  animation: 0.3s ease-in-out sunny-hover--back both;
+}
+
+.sunny-day .sun {
+  width: 35rem;
+  height: 35rem;
+  border-radius: 100%;
+  position: absolute;
+  top: -4rem;
+  right: -2.8rem;
+  background-color: var(--sun-color);
+  animation: sun-rays 4s infinite;
+  box-shadow: 0 0 1rem rgba(255, 192, 98, 0.4), 0 0 0 2.8rem rgb(255, 198, 102),
+    0 0 0 3rem rgb(255, 175, 73), 0 0 0 4.8rem rgb(255, 177, 77);
+}
+
+.moon-night {
+  background-color: var(--moon-night);
+  box-shadow: 0 5px 10px var(--moon-night);
+  animation: 0.3s ease-in-out moon-hover--back both;
+}
+
+.snow-day {
+  background-color: var(--snow-day);
+  box-shadow: 0 5px 10px var(--snow-day);
+  animation: 0.3s ease-in-out snow-hover--back both;
+}
+
+.foreground-mountain {
+  background-color: var(--foreground-mountain);
+  width: 34rem;
+  height: 10rem;
+  border-radius: 100%;
+  position: absolute;
+  bottom: -6.6rem;
+  left: 1rem;
+  box-shadow: 0 0 2rem #1ec9ed;
+}
+.background-mountain {
+  background-color: var(--background-mountain);
+  width: 24rem;
+  height: 10rem;
+  border-radius: 100%;
+  position: absolute;
+  top: 5rem;
+  left: -17rem;
+  box-shadow: 0 0 2rem #1ec9ed;
+}
+
+.moon-night .moon {
+  width: 35rem;
+  height: 35rem;
+  background-color: var(--moon);
+  border-radius: 100%;
+  position: absolute;
+  top: 2rem;
+  right: 1.5rem;
+  animation: moon-rays 4s infinite;
+  box-shadow: 0 0 1rem rgb(79, 85, 148), 0 0 0 1.5rem rgb(79, 85, 148),
+    0 0 3rem rgb(79, 85, 148), 0 0 0 3.5rem rgb(65, 73, 137),
+    0 0 5rem rgb(44, 52, 114);
+}
+
+.moon-night .moon2 {
+  width: 28rem;
+  height: 28rem;
+  background-color: var(--moon-night);
+  border-radius: 100%;
+  position: absolute;
+  top: 5rem;
+  right: 1.5rem;
+}
+
+@keyframes sun-rays {
+  0% {
+    box-shadow: 0 0 1rem rgba(255, 192, 98, 0.4),
+      0 0 0 2.8rem rgb(255, 198, 102), 0 0 0 3rem rgb(255, 175, 73),
+      0 0 0 4.8rem rgb(255, 177, 77);
+  }
+  50% {
+    box-shadow: 0 0 0.8rem rgba(255, 192, 98, 0.4),
+      0 0 0 2.2rem rgb(255, 198, 102), 0 0 0 2.8rem rgb(255, 175, 73),
+      0 0 0 4.4rem rgb(255, 177, 77);
+  }
+  100% {
+    box-shadow: 0 0 1rem rgba(255, 192, 98, 0.4),
+      0 0 0 2.8rem rgb(255, 198, 102), 0 0 0 3rem rgb(255, 175, 73),
+      0 0 0 4.8rem rgb(255, 177, 77);
+  }
+}
+
+@keyframes moon-rays {
+  0% {
+    box-shadow: 0 0 1rem rgb(79, 85, 148), 0 0 0 1.5rem rgb(79, 85, 148),
+      0 0 3rem rgb(79, 85, 148), 0 0 0 3.5rem rgb(65, 73, 137),
+      0 0 5rem rgb(44, 52, 114);
+  }
+  50% {
+    box-shadow: 0 0 1rem rgb(79, 85, 148), 0 0 0 1.8rem rgb(79, 85, 148),
+      0 0 3rem rgb(79, 85, 148), 0 0 0 3.3rem rgb(65, 73, 137),
+      0 0 5rem rgb(44, 52, 114);
+  }
+  100% {
+    box-shadow: 0 0 1rem rgb(79, 85, 148), 0 0 0 1.5rem rgb(79, 85, 148),
+      0 0 3rem rgb(79, 85, 148), 0 0 0 3.5rem rgb(65, 73, 137),
+      0 0 5rem rgb(44, 52, 114);
+  }
+}
+
+.loader {
+  border-top-color: #3498db;
+  -webkit-animation: spinner 1.5s linear infinite;
+  animation: spinner 1.5s linear infinite;
+}
+
+.loader-message {
+  text-shadow: none;
+}
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
