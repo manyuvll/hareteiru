@@ -6,6 +6,52 @@ import * as constants from '../../utils/const'
 
 import './App.css';
 
+const WEATHER_STATUS = {
+    day: {
+      sunny: {
+        background: "sunny-day",
+        illustration: "sunny",
+        illustration_complement: ""
+      },
+      cloudy: {
+        background: "sunny-day",
+        illustration: "sunny",
+        illustration_complement: "cloudy"
+      },
+      rainy: {
+        background: "sunny-day",
+        illustration: "sunny",
+        illustration_complement: "rainy"
+      },
+      snowy: {
+        background: "sunny-day",
+        illustration: "sunny",
+        illustration_complement: "snowy"
+      },
+    },
+    night: {
+      sunny: {
+        background: "moon-night",
+        illustration: "moon",
+        illustration_complement: ""
+      },
+      cloudy: {
+        background: "moon-night",
+        illustration: "moon",
+        illustration_complement: ""
+      },
+      rainy: {
+        background: "moon-night",
+        illustration: "moon",
+        illustration_complement: ""
+      },
+      snowy: {
+        background: "moon-night",
+        illustration: "moon",
+        illustration_complement: ""
+      },
+    }
+}
 
 export default function App() {
   const city = useFormInput('');
@@ -19,8 +65,8 @@ export default function App() {
   return (
       <div class="card--weather moon-night">
         <div class="bg--illustration">
-          <div class="moon"></div>
-          <div class="moon2"></div>
+          <div class="starry"></div>
+          <div class=""></div>
         </div>
         <div class="weather--indicator moon-indicator flex flex-col items-center">
             {/* {status === constants.IDLE && <div>Start your journey by clicking a button</div>} */}
@@ -46,7 +92,7 @@ export default function App() {
             }
             {status === 'error' && <div>{error}</div>}
           </div>
-        <div class="m-8 city flex" label="City">
+        <div class="m-8 city-search flex" label="City">
           <input {...city} tabIndex="1" onkeydown={e => e.key === 'Enter' && fetchClickHandler} placeholder="Ex: Tokyo, JP" type="text" class="rounded-md mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black" />
           <button class="bg-yellow-600 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded" onClick={fetchClickHandler}>Search</button>
         </div>
