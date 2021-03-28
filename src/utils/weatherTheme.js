@@ -31,18 +31,18 @@ const WEATHER_STATUS = {
       },
       cloudy: {
         background: "moon-night",
-        illustration: "moon",
-        illustration_complement: ""
+        illustration: "starry",
+        illustration_complement: "cloudy"
       },
       rainy: {
         background: "moon-night",
-        illustration: "moon",
-        illustration_complement: ""
+        illustration: "starry",
+        illustration_complement: "cloudy"
       },
       snowy: {
         background: "moon-night",
-        illustration: "moon",
-        illustration_complement: ""
+        illustration: "starry",
+        illustration_complement: "cloudy"
       },
     }
 }
