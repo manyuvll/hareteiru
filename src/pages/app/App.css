@@ -7,7 +7,7 @@
 :root {
   --sun-color: #ffe65c;
   --sun-color-rgba: rgb(255, 230, 92);
-  --card-sunny: #ffa333;
+  --card-sunny: #6495ed;
   --moon-night: #2f3475;
   --moon: #ffe646;
   --moon-wave: rgb(79, 85, 148);
@@ -17,7 +17,7 @@
 }
 
 body {
-  background-color: #dbf8ff;
+  background-color: #2f3475;
 }
 
 .grid {
@@ -82,27 +82,27 @@ body {
   animation: cloudy 5s ease-in-out infinite;
   background: #ffffff;
   border-radius: 50%;
-  box-shadow: #ffffff 6vh -6vh 0 -5px, #ffffff 8vh -25px, #ffffff 30vh -2vh,
-    #ffffff 19vh 15px 0 -6vh, #ffffff 19vh 6vh 0 -10vh;
-  height: 40vh;
+  box-shadow: #ffffff 6rem -6vh 0 -5rem, #ffffff 8rem 5rem, #ffffff 0rem 5rem,
+    #ffffff 5rem 1rem;
+  height: 20vh;
   width: 40vw;
   margin-left: -60px;
   position: absolute;
   top: 20rem;
   right: 9rem;
-  z-index: 9;
+  z-index: 1;
 }
 .cloudy:after {
   animation: cloudy_shadow 5s ease-in-out infinite;
   background: #000000;
   border-radius: 50%;
   content: "";
-  height: 5vh;
-  width: 50vw;
+  height: 5rem;
+  width: 30rem;
   opacity: 0.2;
   position: absolute;
-  left: 3rem;
-  top: 20rem;
+  left: 1rem;
+  top: 25rem;
   transform: scale(1);
 }
 @keyframes cloudy {
@@ -135,8 +135,8 @@ body {
   margin-left: -10px;
   opacity: 1;
   position: absolute;
-  left: 777px;
-  top: 150px;
+  right: 30rem;
+  top: 20vh;
 }
 .starry:after {
   animation: starry 5s ease-in-out infinite;
@@ -228,5 +228,41 @@ body {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+/* Arrow */
+.arrow-container {
+  bottom: 10rem;
+  width: 25px;
+  /* cubic-bezier-easing = sine / mehr Beispiele: https://easings.net/ */
+  animation: bounce 1600ms infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  cursor: pointer;
+  height: 20px;
+}
+
+.arrow-down {
+  height: 6px;
+  background: white;
+  transform: rotate(45deg);
+  transform-origin: 0% 0%;
+  border-radius: 5px;
+}
+.arrow-down:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 100%;
+  border-radius: 5px;
+  background: white;
+  transform: rotate(-90deg);
+  transform-origin: 0% 100%;
+}
+
+@keyframes bounce {
+  50% {
+    transform: translateY(-15px);
   }
 }

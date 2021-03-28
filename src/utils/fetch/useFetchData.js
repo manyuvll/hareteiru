@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import axios from 'axios';
 import * as constants from '../const'
+import { getCurrentTheme } from '../../utils/weatherTheme'
 
 export default function useFetchData(loadOnMount) {
     const [status, setStatus] = useState(constants.IDLE);
@@ -22,6 +23,7 @@ export default function useFetchData(loadOnMount) {
           
               })
               .then((response) => {
+                response.data = {...response.data, ...getCurrentTheme(response.data)}
                 setValue(response.data);
                 setStatus(constants.SUCCESS);
               })

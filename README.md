@@ -1,3 +1,18 @@
+# liste-app
+
+![Listing](https://cdn.discordapp.com/attachments/625998454610460672/825632897074855938/Capture_decran_2021-03-28_a_16.30.28.png)
+
+## Demo
+
+soon
+
+## Project details
+
+Made to practice with ReactJS with Hooks.
+Uses OpenWeatherMap to get current weather through my own api.
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
